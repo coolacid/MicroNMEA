@@ -314,6 +314,8 @@ bool MicroNMEA::processRMC(const char* s)
   
   s = parseTime(s);
   _isValid = (*s == 'A');
+  if (_isValid == false)
+    return false;
   s += 2; // Skip validity and comma
   _latitude = parseDegreeMinute(s, 2, &s);
   if (*s == 'S')
