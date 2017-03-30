@@ -317,11 +317,15 @@ bool MicroNMEA::processRMC(const char* s)
   if (_isValid == false)
     return false;
   s += 2; // Skip validity and comma
+  parseField(s, _minlatitude, 10);
   _latitude = parseDegreeMinute(s, 2, &s);
+  _dirlat = *s;
   if (*s == 'S')
     _latitude *= -1; 
   s += 2; // Skip N/S and comma
+  parseField(s, _minlongitude, 11);
   _longitude = parseDegreeMinute(s, 3, &s);
+  _dirlong = *s;
   if (*s == 'W')
     _longitude *= -1;
   s += 2; // Skip E/W and comma

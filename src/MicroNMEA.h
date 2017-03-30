@@ -76,6 +76,25 @@ public:
     return _longitude;
   }
 
+  // Latitude in millionths of a degree. North is positive.
+  char* getMinLatitude(void) {
+    return _minlatitude;
+  }
+  
+  // Longitude in millionths of a degree. East is positive.
+  char* getMinLongitude(void) {
+    return _minlongitude;
+  }
+
+  char getDirLat(void) {
+    return _dirlat;
+  }
+
+  char getDirLong(void) {
+    return _dirlong;
+  }
+
+
   // Altitude in millimetres.
   bool getAltitude(long &alt) const {
     if (_altitudeValid)
@@ -172,6 +191,7 @@ private:
   char _navSystem;
   bool _isValid;
   long _latitude, _longitude; // In millionths of a degree
+  char _minlatitude[12], _minlongitude[13], _dirlat, _dirlong; // In Minutes direct from NEMA
   long _altitude; // In millimetres
   bool _altitudeValid;
   long _speed, _course;
